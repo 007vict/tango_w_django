@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'tango_with_django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tango_with_django',
+        'NAME': 'tango_with_django1',
         'USER': 'postgres',
         'PASSWORD': '1888vict',
         'HOST': '127.0.0.1',
