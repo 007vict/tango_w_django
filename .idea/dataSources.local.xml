@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="tango_with_django@localhost" uuid="cc8e0334-d6df-4ba6-9c82-d4e4354c2da6">
+      <database-info product="PostgreSQL" version="10.6 (Ubuntu 10.6-1.pgdg18.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <introspection-schemas>tango_with_django:public</introspection-schemas>
+    </data-source>
+  </component>
+</project>
