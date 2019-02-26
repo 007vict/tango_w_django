@@ -100,8 +100,8 @@
     <schema id="22" parent="7" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
-      <IntrospectionTimestamp>2019-02-26.16:03:00.639</IntrospectionTimestamp>
-      <IntrospectionStateNumber>2309</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2019-02-26.17:27:42.019</IntrospectionTimestamp>
+      <IntrospectionStateNumber>2344</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -277,11 +277,11 @@
     </table>
     <table id="50" parent="22" name="rango_category">
       <ObjectId>41306</ObjectId>
-      <StateNumber>2309</StateNumber>
+      <StateNumber>2344</StateNumber>
     </table>
     <table id="51" parent="22" name="rango_page">
       <ObjectId>41316</ObjectId>
-      <StateNumber>2309</StateNumber>
+      <StateNumber>2342</StateNumber>
     </table>
     <column id="52" parent="40" name="id">
       <Position>1</Position>
@@ -968,32 +968,46 @@ model</ColNames>
       <StateNumber>2309</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="155" parent="50" name="rango_category_pkey">
+    <column id="155" parent="50" name="likes">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2344</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="156" parent="50" name="views">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2344</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="157" parent="50" name="rango_category_pkey">
       <ObjectId>41310</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="156" parent="50" name="rango_category_name_key">
+    <index id="158" parent="50" name="rango_category_name_key">
       <ObjectId>41312</ObjectId>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="157" parent="50" name="rango_category_name_05d0ee2d_like">
+    <index id="159" parent="50" name="rango_category_name_05d0ee2d_like">
       <ObjectId>41322</ObjectId>
       <ColNames>name</ColNames>
     </index>
-    <key id="158" parent="50" name="rango_category_pkey">
+    <key id="160" parent="50" name="rango_category_pkey">
       <ObjectId>41311</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>rango_category_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="159" parent="50" name="rango_category_name_key">
+    <key id="161" parent="50" name="rango_category_name_key">
       <ObjectId>41313</ObjectId>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>rango_category_name_key</UnderlyingIndexName>
     </key>
-    <column id="160" parent="51" name="id">
+    <column id="162" parent="51" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -1002,50 +1016,50 @@ model</ColNames>
       <TypeId>23</TypeId>
       <SequenceName>rango_page_id_seq</SequenceName>
     </column>
-    <column id="161" parent="51" name="title">
+    <column id="163" parent="51" name="title">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>2309</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="162" parent="51" name="url">
+    <column id="164" parent="51" name="url">
       <Position>3</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>2309</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="163" parent="51" name="views">
+    <column id="165" parent="51" name="views">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>2309</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="164" parent="51" name="category_id">
+    <column id="166" parent="51" name="category_id">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>2309</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="165" parent="51" name="rango_page_pkey">
+    <index id="167" parent="51" name="rango_page_pkey">
       <ObjectId>41320</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="166" parent="51" name="rango_page_category_id_0872388a">
+    <index id="168" parent="51" name="rango_page_category_id_0872388a">
       <ObjectId>41328</ObjectId>
       <ColNames>category_id</ColNames>
     </index>
-    <key id="167" parent="51" name="rango_page_pkey">
+    <key id="169" parent="51" name="rango_page_pkey">
       <ObjectId>41321</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>rango_page_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="168" parent="51" name="rango_page_category_id_0872388a_fk_rango_category_id">
+    <foreign-key id="170" parent="51" name="rango_page_category_id_0872388a_fk_rango_category_id">
       <ObjectId>41323</ObjectId>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
