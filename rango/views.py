@@ -4,6 +4,8 @@ from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserProfileForm, UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.conf import settings
 
 
 
@@ -105,8 +107,10 @@ def user_login(request):
             else:
                 return HttpResponse('Your Rango account is disibled.')
         else:
-            print("Invalid login details : {0}, {1}".format(username, password))
-            return HttpResponse('Invalid login details supplied.')
+            messages.add_message(request, settings.MY_SUPER_ERROR, 'Username or Password not correct')
+            return HttpResponseRedirect('/rango/login/')
+            # print("Invalid login details : {0}, {1}".format(username, password))
+            # return HttpResponse('Invalid login details supplied.')
     else:
         return render(request, 'rango/login.html', {})
 
