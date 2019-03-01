@@ -3,28 +3,42 @@
 {% block title %}Homepage of Rango{% endblock %}
 
 {% block body_block %}
-{% if user.is_authenticated %}
-<h1>Rango says...{{ user.username }}!</h1>
-{% else %}
-<h1>Rango says...hello world!</h1>
-{% endif %}
-<h2>Category:</h2>
+    {% if user.is_authenticated %}
+        <h1>Rango says...{{ user.username }}!</h1>
+    {% else %}
+        <h1>Rango says...hello world!</h1>
+    {% endif %}<br>
 {% if categories %}
-    <ul>
-        {% for category in categories %}
-            <li><a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
-        {% endfor %}
-    </ul>
-    <h2>Page:</h2>
-    {% if pages %}
-        <ul>
-            {% for page in pages %}
-                <li><strong>{{ page.title }}</strong>  Views <strong>{{ page.views }}</strong></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+<div class="row">
+        <div class="col-md-5">
+            <h3>Top 5 Category:</h3>
+                <ul>
+                    {% for category in categories %}
+                        <ul class="list-group">
+                            <li><a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
+                        </ul>
+                    {% endfor %}
+                </ul>
+        </div>
+    <br>
+    <div class="col-md-5 col-md-offset-4">
+                    <h3 class="panel-title">Top 5 Page:</h3>
+                    {% if pages %}
+                    <ul>
+                        {% for page in pages %}
+                            <ul class="list-group list-group-flush">
+                                <li>{{ page.title }} Views <strong>{{ page.views }}</strong></li>
+                            </ul>
+                        {% endfor %}
+                    </ul>
+          {% endif %}
+    </div>
+</div>
 {% else %}
-    <strong>There are no categories present.</strong>
+                <strong>There are no categories present.</strong>
 {% endif %}
-    <p> {{ user }} visits this site : {{ visits}}</p>
+
+
+    <hr/>
+    <p> {{ user }} visits this site : {{ visits }}</p>
 {% endblock %}
