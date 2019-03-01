@@ -1,3 +1,4 @@
+{% load rango_extras %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,17 +53,10 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-3 col-md-2 sidebar ">
             {% block side_block %}
-                <div>
-                    <ul>
-                        {% if user.is_authenticated %}
-                            <li><a href="{% url 'add_category' %}">Add a New Category</a></li>
-                            <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
-                            <li><a href="{% url 'auth_password_change' %}">Password_change</a></li>
-                        {% endif %}
-                    </ul>
-                </div>{% endblock %}
+                {% get_category_list category %}
+            {% endblock %}
 
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

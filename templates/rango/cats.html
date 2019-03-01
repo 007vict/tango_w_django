@@ -1,0 +1,12 @@
+{% if cats %}
+    <ul class="side-nav">
+    {% for c in cats %}
+            <li {% if c == act_cat %} class="alert alert-info " role="alert " {% endif %}>
+                <a href="{% url 'category' c.slug %}">{{ c.name }}
+                </a>
+            </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <li><strong>There are no category present.</strong></li>
+{% endif %}
