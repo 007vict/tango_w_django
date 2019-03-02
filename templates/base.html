@@ -1,4 +1,5 @@
 {% load rango_extras %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +57,7 @@
         <div class="col-sm-3 col-md-2 sidebar ">
             {% block side_block %}
                 {% get_category_list category %}
+
             {% endblock %}
 
         </div>

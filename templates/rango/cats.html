@@ -1,7 +1,7 @@
 {% if cats %}
     <ul class="side-nav">
     {% for c in cats %}
-            <li {% if c == act_cat %} class="alert alert-info " role="alert " {% endif %}>
+            <li {% if c == act_cat %} class="alert alert-info p-1 h-25 d-inline-block" role="alert " {% endif %}>
                 <a href="{% url 'category' c.slug %}">{{ c.name }}
                 </a>
             </li>
