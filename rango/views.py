@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserProfileForm, UserForm
 from django.contrib.auth import authenticate, login, logout
@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
 from datetime import datetime
+from search.views import searchcategory
+
 
 
 
@@ -56,18 +58,25 @@ def about(request):
 
 def category(request, category_name_slug):
     context_dict = {}
+    if request.method == 'GET':
+        try:
+            category = Category.objects.get(slug=category_name_slug)
+            context_dict['category_name'] = category.name
+            pages = Page.objects.filter(category=category).order_by('-views')
+            context_dict['pages'] = pages
+            context_dict['category'] = category
+            context_dict['category_name_slug'] = category.slug
 
-    try:
-        category = Category.objects.get(slug=category_name_slug)
-        context_dict['category_name'] = category.name
-        pages = Page.objects.filter(category=category)
-        context_dict['pages'] = pages
-        context_dict['category'] = category
-        context_dict['category_name_slug'] = category.slug
+        except Category.DoesNotExist:
+            pass
+        return render(request, 'rango/category.html', context_dict,)
+    else:
+        form = searchcategory(request)
+        return render(request, 'search/search.html')
 
-    except Category.DoesNotExist:
-        pass
-    return render(request, 'rango/category.html', context_dict,)
+
+
+
 
 
 def add_category(request):
@@ -155,4 +164,20 @@ def restricted(request):
 # def user_logout(request):
 #     logout(request)
 #     return HttpResponseRedirect('/rango/')
+
+def track_url(request):
+    page_id = None
+    url = '/rango/'
+    if request.method == 'GET':
+        if 'page_id' in request.GET:
+            page_id = request.GET['page_id']
+            try:
+                page = Page.objects.get(id=page_id)
+                page.views = page.views + 1
+                page.save()
+                url = page.url
+            except:
+                pass
+    return redirect(url)
+
 

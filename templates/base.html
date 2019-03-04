@@ -31,11 +31,21 @@
             </li>
         </ul>
     </div>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'add_category' %}">Add category <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
-            <form class="form-inline my-2 my-lg-0" action="{% url 'search:searchposts' %}" method="GET" value="{{ request.GET.q }}">
-                <input class="form-control mr-sm-2" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search">Search</button>
+            <form class="form-inline my-2 my-lg-0" action="{% url 'search:searchposts' %}" method="GET"
+                  value="{{ request.GET.q }}">
+                <input class="form-control mr-sm-2" type="text" name="q" value="{{ request.GET.q }}"
+                       placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search">Search
+                </button>
             </form>
             <li class="nav-item">
                 {% if not user.is_authenticated %}
@@ -59,13 +69,13 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar ">
+        <div class="col-sm-3 col-md-2 sidebar">
             {% block side_block %}
                 <h5>Categories:</h5>
                 {% get_category_list category %}
-
             {% endblock %}
-
+            {% block search %}
+            {% endblock %}
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div>
