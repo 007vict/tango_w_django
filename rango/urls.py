@@ -11,6 +11,8 @@ urlpatterns =[
     # path('login/', views.user_login, name='login')
     # path('logout/', views.user_logout, name='logout'),
     path('restricted/', views.restricted, name='restricted'),
+    path('goto/', views.track_url, name='goto'),
+
 
 
 ]
