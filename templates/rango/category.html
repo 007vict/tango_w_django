@@ -5,14 +5,31 @@
 {% block title %}{{ category_name }}{% endblock %}
 
 {% load staticfiles %}
+{% block search %}
+        <form class="form-inline my-1 my-lg-0" action="{% url 'search:searchcategory' %}" method="GET"
+                  value="{{ request.GET.q }}">
+                <input class="form-control mr-sm-2 " type="text" name="q" value="{{ request.GET.q }}"
+                       placeholder="Search category:" aria-label="Search" size="15">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search">Search
+                </button>
+            </form>
+    {% endblock %}
 
 {% block body_block %}
+
     <h3 class="shadow-sm mb-3 bg-white rounded">Page of category {{ category_name }} :</h3>
     {% if category %}
         {% if pages %}
             <ul>
                 {% for page in pages %}
-                    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                    <li>
+                    <a href="{% url 'goto' %}?page_id={{ page.id }}">{{ page.title }}</a>
+                {% if page.views > 1 %}
+                    ({{ page.views }}views)
+                {% elif page.views == 1 %}
+                    ({{ page.views }}views)
+                {% endif %}
+                    </li>
                 {% endfor %}
             </ul>
         {% else %}

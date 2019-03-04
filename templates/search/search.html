@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Search Page{% endblock %}
+{% block body_block %}
+    <h1>Search Page</h1>
+    <br/>
+
+    {% if submitbutton == 'Search' and request.GET.q != '' %}
+        {% if results or results1 %}
+            <h5>Results for: <b>"{{ request.GET.q }}"</b></h5>
+            <br/><br/>
+            {% for result in results %}
+                <p><a href="{% url 'category' result.slug %}">{{ result.name }}</a>(category)</p>
+                <br/>
+                {% for result1 in results1 %}
+                    <p><a href="{% url 'category' result.slug %}">{{ result1.title }}</a>(page)</p>
+                    <br/>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+    {% else %}
+        No search results for this query
+    {% endif %}
+
+{% endblock %}
