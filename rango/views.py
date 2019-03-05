@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from rango.models import Category, Page
+from rango.models import Category, Page, UserProfile
 from rango.forms import CategoryForm, PageForm, UserProfileForm, UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.conf import settings
 from datetime import datetime
 from search.views import searchcategory
+from django.contrib.auth.models import User
 
 
 
@@ -179,5 +180,46 @@ def track_url(request):
             except:
                 pass
     return redirect(url)
+
+@login_required
+def profile_registration(request):
+    profile = UserProfile.objects.create(id=id)
+    if request.method == 'POST':
+        form = UserProfileForm(data=request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
+                profile.save()
+                return render(request, 'rango/profile.html', {'profile': profile})
+            profile.save()
+
+    else:
+         form = UserProfileForm()
+         return render(request, 'rango/profile_registration.html')
+    return render(request, 'rango/profile.html', {'profile': profile})
+
+@login_required
+def like_category(request):
+
+    cat_id = None
+    if request.method == 'GET':
+        cat_id = request.GET['category_id']
+
+    likes = 0
+    if cat_id:
+        cat = Category.objects.get(id=int(cat_id))
+        if cat:
+            likes = cat.likes + 1
+            cat.likes = likes
+            cat.save()
+
+    return HttpResponse(likes)
+
+
+
+
+
+
 
 

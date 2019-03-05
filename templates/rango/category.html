@@ -6,14 +6,14 @@
 
 {% load staticfiles %}
 {% block search %}
-        <form class="form-inline my-1 my-lg-0" action="{% url 'search:searchcategory' %}" method="GET"
-                  value="{{ request.GET.q }}">
-                <input class="form-control mr-sm-2 " type="text" name="q" value="{{ request.GET.q }}"
-                       placeholder="Search category:" aria-label="Search" size="15">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search">Search
-                </button>
-            </form>
-    {% endblock %}
+    <form class="form-inline my-1 my-lg-0" action="{% url 'search:searchcategory' %}" method="GET"
+          value="{{ request.GET.q }}">
+        <input class="form-control mr-sm-2 " type="text" name="q" value="{{ request.GET.q }}"
+               placeholder="Search category:" aria-label="Search" size="15">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search">Search
+        </button>
+    </form>
+{% endblock %}
 
 {% block body_block %}
 
@@ -23,23 +23,36 @@
             <ul>
                 {% for page in pages %}
                     <li>
-                    <a href="{% url 'goto' %}?page_id={{ page.id }}">{{ page.title }}</a>
-                {% if page.views > 1 %}
-                    ({{ page.views }}views)
-                {% elif page.views == 1 %}
-                    ({{ page.views }}views)
-                {% endif %}
+                        <a href="{% url 'goto' %}?page_id={{ page.id }}">{{ page.title }}</a>
+                        {% if page.views > 1 %}
+                            ({{ page.views }}views)
+                        {% elif page.views == 1 %}
+                            ({{ page.views }}views)
+                        {% endif %}
                     </li>
                 {% endfor %}
             </ul>
         {% else %}
             <strong>No pages currently in category.</strong>
-        {% endif %}<hr>
+        {% endif %}
+        <hr>
         {% if user.is_authenticated %}
             <a class="btn btn-outline-primary" href="{% url 'add_page' category.slug %}" role="button">+ Add a page</a>
         {% endif %}
     {% else %}
         <p>The specified category {{ category_name }} does not exist!</p>
     {% endif %}
+    <p>
+
+        <strong id="like_count">{{ category.likes }}</strong> people like this category
+
+        {% if user.is_authenticated %}
+            <button id="likes" data-catid="{{ category.id }}" class="btn btn-primary" type="button">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                Like
+            </button>
+        {% endif %}
+
+    </p>
 {% endblock %}
 

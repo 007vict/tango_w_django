@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="tango_with_django1@localhost [2]" uuid="1e320543-702c-4a60-bb14-e290dd96f61e">
+    <data-source source="LOCAL" name="tango_with_django1@localhost" uuid="e7a7005c-0df9-4f0c-88ae-ed1f4d146c6a">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

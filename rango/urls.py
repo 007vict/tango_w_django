@@ -12,7 +12,7 @@ urlpatterns =[
     # path('logout/', views.user_logout, name='logout'),
     path('restricted/', views.restricted, name='restricted'),
     path('goto/', views.track_url, name='goto'),
-
-
-
+    path('add_profile/', views.profile_registration, name='profile_registration'),
+    # path('profile/', views.profile, name='profile'),
+    path('like_category/', views.like_category, name='like_category'),
 ]

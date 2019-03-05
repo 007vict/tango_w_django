@@ -5,5 +5,9 @@
     <h1>About of chameleon.</h1>
     <p>{{ chameleon }}</p>
     <p> {{ user }} visits this site : {{ visits }}</p>
-    <img src="{% static 'images/rango.jpeg' %}">
+    <img src="{% static 'images/rango.jpeg' %}"><br>
+    <button id="about-bt" onClick="alert('You clicked the button using Javascript.');">
+        Click Me - I run Javascript
+    </button>
+    <button id="about-btn"> Click Me - I'm Javascript on Speed</button>
 {% endblock %}

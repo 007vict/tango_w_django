@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Change profile{% endblock %}
+{% block body_block %}
+    <h1>Change profile:</h1>
+    <form class="form-horizontal"  role="form" method="post" action="{% url 'profile_registration' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="website">Add a website:</label>
+            <div class="col-sm-10">
+                <input class="form-user-profile" placeholder="Website" id="website" maxlength="254" name="website"
+                       type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="id_p">Add a picture:</label>
+            <div class="col-sm-10">
+                <input class="form-control"  placeholder="Picture"
+                       maxlength="254" name="picture"
+                       type="image">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

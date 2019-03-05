@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="tango_with_django1@localhost [2]" uuid="1e320543-702c-4a60-bb14-e290dd96f61e">
+    <data-source name="tango_with_django1@localhost" uuid="e7a7005c-0df9-4f0c-88ae-ed1f4d146c6a">
       <database-info product="PostgreSQL" version="10.6 (Ubuntu 10.6-1.pgdg18.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.2">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
