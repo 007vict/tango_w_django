@@ -181,8 +181,8 @@ def track_url(request):
 
 
 @login_required
-def profile_registration(request):
-    profile = UserProfile.objects.get_or_create(user_id=id)
+def profile_registration(request, id):
+    profile = UserProfile.objects.get_or_create(UserProfile, user_id=id)
     if request.method == 'POST':
         form = UserProfileForm(data=request.POST)
         if form.is_valid():
