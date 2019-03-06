@@ -43,9 +43,8 @@
             <form class="form-inline my-2 my-lg-0" action="{% url 'search:searchposts' %}" method="GET"
                   value="{{ request.GET.q }}">
                 <input class="form-control mr-sm-2" type="text" name="q" value="{{ request.GET.q }}"
-                       placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search">Search
-                </button>
+                       placeholder="Search all" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search">Search</button>
             </form>
             <li class="nav-item">
                 {% if not user.is_authenticated %}
@@ -62,11 +61,11 @@
                     <a class="nav-link" href="{% url 'auth_logout' %}?next=/rango/">Logout</a>
                 {% endif %}
             </li>
-{#            <li class="nav-item">#}
-{#                {% if user.is_authenticated %}#}
-{#                    <a class="nav-link" href="{% url 'profile_registration' %}">Change Profile</a>#}
-{#                {% endif %}#}
-{#            </li>#}
+            {#            <li class="nav-item">#}
+            {#                {% if user.is_authenticated %}#}
+            {#                    <a class="nav-link" href="{% url 'profile_registration' %}">Change Profile</a>#}
+            {#                {% endif %}#}
+            {#            </li>#}
         </ul>
     </div>
 </nav>
@@ -82,6 +81,7 @@
             {% block search %}
             {% endblock %}
         </div>
+
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div>
                 {% block body_block %}{% endblock %}

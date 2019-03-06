@@ -11,8 +11,6 @@ from search.views import searchcategory
 from django.contrib.auth.models import User
 
 
-
-
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     pages_list = Page.objects.order_by('-views')[:5]
@@ -44,6 +42,7 @@ def index(request):
 
     return response
 
+
 def about(request):
     visits = request.session.get('visits')
     if request.session.get('visits'):
@@ -70,14 +69,10 @@ def category(request, category_name_slug):
 
         except Category.DoesNotExist:
             pass
-        return render(request, 'rango/category.html', context_dict,)
+        return render(request, 'rango/category.html', context_dict, )
     else:
         form = searchcategory(request)
         return render(request, 'search/search.html')
-
-
-
-
 
 
 def add_category(request):
@@ -91,6 +86,7 @@ def add_category(request):
     else:
         form = CategoryForm()
     return render(request, 'rango/add_category.html', {'form': form})
+
 
 def add_page(request, category_name_slug):
     try:
@@ -113,6 +109,7 @@ def add_page(request, category_name_slug):
         form = PageForm()
     context_dict = {'form': form, 'category': cat}
     return render(request, 'rango/add_page.html', context_dict)
+
 
 # def register(request):
 #         registered = False
@@ -161,6 +158,7 @@ def restricted(request):
     context = {'message': "Since you're logged in, you can see this text!"}
     return render(request, 'rango/restricted.html', context)
 
+
 # @login_required
 # def user_logout(request):
 #     logout(request)
@@ -181,9 +179,10 @@ def track_url(request):
                 pass
     return redirect(url)
 
+
 @login_required
 def profile_registration(request):
-    profile = UserProfile.objects.create(id=id)
+    profile = UserProfile.objects.get_or_create(user_id=id)
     if request.method == 'POST':
         form = UserProfileForm(data=request.POST)
         if form.is_valid():
@@ -195,13 +194,13 @@ def profile_registration(request):
             profile.save()
 
     else:
-         form = UserProfileForm()
-         return render(request, 'rango/profile_registration.html')
+        form = UserProfileForm()
+        return render(request, 'rango/profile_registration.html')
     return render(request, 'rango/profile.html', {'profile': profile})
+
 
 @login_required
 def like_category(request):
-
     cat_id = None
     if request.method == 'GET':
         cat_id = request.GET['category_id']
@@ -215,11 +214,5 @@ def like_category(request):
             cat.save()
 
     return HttpResponse(likes)
-
-
-
-
-
-
 
 
