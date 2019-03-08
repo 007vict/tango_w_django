@@ -15,7 +15,7 @@ SECRET_KEY = '-9d7uk3oe5!lr37b2_z@opbm^6+f@c#4ms$egvc2!#f$2k3zl9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [' https://rangotang.herokuapp.com/', '127.0.0.1']
+ALLOWED_HOSTS = [' https://rangotang.herokuapp.com/', '127.0.0.1',]
 
 
 # Application definition
